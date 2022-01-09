@@ -40,4 +40,4 @@ jobs:
     if: success() && github.ref == 'refs/heads/master'
     steps:
       - name: Deploy app
-        run: exit 0
+        run: echo "do this only on master"
