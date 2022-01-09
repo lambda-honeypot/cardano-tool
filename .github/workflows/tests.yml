@@ -1,0 +1,14 @@
+name: Test Workflow
+
+on:
+  workflow_call:
+
+jobs:
+  # Make sure eslint passes
+  eslint:
+    name: Test Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies and run eslint
+        run: make test
