@@ -21,7 +21,7 @@ vet:
 	@echo "running go vet"
 	go vet $(pkgs)
 
-lint:
+lint: dependencies
 	revive -config revive_conf.toml $(pkgs)
 
 test: check
