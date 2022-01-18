@@ -41,6 +41,7 @@ generate-mocks:
 dependencies: check-system-dependencies
 ifeq (, $(shell which revive))
 	@echo "== cannot find revive installing"
+	go get github.com/mgechev/revive
 	go install github.com/mgechev/revive
 endif
 
