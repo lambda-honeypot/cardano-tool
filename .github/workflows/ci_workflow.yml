@@ -33,7 +33,7 @@ jobs:
 #          echo test, and deploy your project.
   # Make sure eslint passes
   test:
-    uses: lambda-honeypot/cardano-tool/.github/workflows/tests.yml@master
+    uses: lambda-honeypot/cardano-tool/.github/workflows/tests.yml@check_tests
 
   release:
     runs-on: ubuntu-latest
