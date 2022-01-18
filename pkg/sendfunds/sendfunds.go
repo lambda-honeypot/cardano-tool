@@ -7,6 +7,7 @@ import (
 	log "github.com/sirupsen/logrus"
 	"io/ioutil"
 	"os"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -195,7 +196,16 @@ func generateTokenDetailsAndVerify(utxo *FullUTXO, paymentDetails map[string]Pay
 			sendTotals[tokenDetail.TokenID] += tokenDetail.TokenAmount
 		}
 	}
-	for tokenID, sendTokenAmount := range sendTotals {
+
+	sortedKeys := make([]string, 0, len(sendTotals))
+	for k := range sendTotals {
+		sortedKeys = append(sortedKeys, k)
+	}
+
+	sort.Strings(sortedKeys)
+
+	for _, tokenID := range sortedKeys {
+		sendTokenAmount := sendTotals[tokenID]
 		if utxo.TokenBalances[tokenID] < sendTokenAmount {
 			return nil, fmt.Errorf("total send token amount for token: %s is %d - this is greater than source wallet balance of %d", tokenID, sendTokenAmount, utxo.TokenBalances[tokenID])
 		}

@@ -90,9 +90,9 @@ var _ = Describe("generateTokenDetailsAndVerify", func() {
 			}},
 		}
 		expectedTokens := []TokenDetails{
-			{token1, 82},
-			{token2, 6},
 			{token3, 4},
+			{token2, 6},
+			{token1, 82},
 		}
 		paymentTokenDetails, err := generateTokenDetailsAndVerify(utxoDetails, paymentAddressesWithTokens)
 		Expect(err).ToNot(HaveOccurred())
